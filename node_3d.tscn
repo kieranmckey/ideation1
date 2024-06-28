@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://jkb77dan0nob"]
+[gd_scene load_steps=13 format=3 uid="uid://jkb77dan0nob"]
 
 [ext_resource type="MeshLibrary" uid="uid://bpex1086vgwgh" path="res://Assets/Models/meshLibrary.tres" id="3_brk37"]
 [ext_resource type="Script" path="res://GridMap.gd" id="4_kqj64"]
@@ -13,25 +13,20 @@ sky_material = SubResource("ProceduralSkyMaterial_cjok1")
 [sub_resource type="Environment" id="Environment_u5cr6"]
 background_mode = 2
 sky = SubResource("Sky_e83ev")
+sky_custom_fov = 1.0
+volumetric_fog_temporal_reprojection_enabled = false
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vvdyn"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i0sab"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ve2uy"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_neik2"]
-albedo_color = Color(0.298039, 1, 1, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_yacrp"]
-top_radius = 0.2
-bottom_radius = 0.02
-height = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tv7vr"]
-albedo_color = Color(0.933333, 0.905882, 0.117647, 1)
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vguye"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y1fgr"]
+albedo_color = Color(0.00392157, 1, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ve2uy"]
+material = SubResource("StandardMaterial3D_y1fgr")
 
 [node name="Node3D" type="Node3D"]
 
@@ -52,25 +47,20 @@ mesh_library = ExtResource("3_brk37")
 physics_material = SubResource("PhysicsMaterial_i0sab")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.369847, 0)
 script = ExtResource("4_t8xac")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-mesh = SubResource("CapsuleMesh_ve2uy")
-surface_material_override/0 = SubResource("StandardMaterial3D_neik2")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0208633, -0.0371506, -0.003613)
+shape = SubResource("CapsuleShape3D_vguye")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/MeshInstance3D"]
-transform = Transform3D(-6.28874e-06, -0.000907594, 1, 0.999976, -0.00692886, -2.77556e-17, 0.00692886, 0.999976, 0.000907616, -0.00480026, 0.456906, -0.586351)
-mesh = SubResource("CylinderMesh_yacrp")
-surface_material_override/0 = SubResource("StandardMaterial3D_tv7vr")
+[node name="bodyMesh" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_ve2uy")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4609, 1.93086)
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 0.965021, 0.262172, 0, -0.262172, 0.965021, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-shape = SubResource("CapsuleShape3D_vguye")
 
 [node name="AudioVisualizer" parent="." instance=ExtResource("4_x84ke")]
