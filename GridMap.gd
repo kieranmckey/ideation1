@@ -11,6 +11,15 @@ var load_distance = 2 # Distance around the player to load chunks
 
 @onready var player = $"../CharacterBody3D"
 
+func _on_energy_change(energyArray):	
+	var used_cells = self.get_used_cells()
+	print(map_to_local(used_cells[1]))
+	#for i in range(1,16):   
+	#	var energy = energyArray[i]
+	#	if energy > 0:
+	#		var tween = get_tree().create_tween()
+			
+
 func _ready():
 	terrain_noise.seed = 693169
 	stone_noise.seed = 316931
@@ -72,3 +81,23 @@ func generate_chunk(chunk_x, chunk_z):
 						set_cell_item(Vector3i(x, y, z), 2) # water
 	
 	chunks[Vector2(chunk_x, chunk_z)] = true
+	
+func pulse_chunk(chunk_x, chunk_z, energyArray):
+	var half_width = chunk_size / 2.0
+	var half_depth = chunk_size / 2.0
+	
+	var ml = self.get_meshes()
+	if ml != null:
+		ml.is_empty()
+	
+	#for x in range(chunk_x * chunk_size - half_width, chunk_x * chunk_size + half_width):
+		#for z in range(chunk_z * chunk_size - half_depth, chunk_z * chunk_size + half_depth):
+			#for y in range(-map_depth, 0):
+				#var ml2 = self.get_meshes()
+				#for i in range(1,16):   
+					#var energy = energyArray[i]
+					#if energy > 0:
+						#var tween = get_tree().create_tween()
+						#tween.tween_property(ml, "mesh.material:albedo_color.a", 0.5, energy)
+
+	
