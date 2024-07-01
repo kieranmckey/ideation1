@@ -20,9 +20,13 @@ func _on_energy_change(energyArray):
 	var half_width = chunk_size / 2.0
 	var half_depth = chunk_size / 2.0
 	self.thisEnergyArray = energyArray.duplicate(true)
+	#var player_chunk = Vector2(
+		#floor(local_to_map(player.position).x / chunk_size),
+		#floor(local_to_map(player.position).z / chunk_size)
+	#)
 	var player_chunk = Vector2(
-		floor(local_to_map(player.position).x / chunk_size),
-		floor(local_to_map(player.position).z / chunk_size)
+		0,
+		0
 	)
 	#print(self.thisEnergyArray)
 	var new_chunks = {} # Dictionary to store the chunks that should be loaded
@@ -43,7 +47,7 @@ func _on_energy_change(energyArray):
 						#print(int(NewValue))
 						
 						var k = 0
-						for y in range(-map_depth, map_depth):
+						for y in range(-map_depth * 2, 0):
 							k = k + 1
 							var p = energyArray[k-1]
 							if p > 0:
@@ -67,7 +71,9 @@ func _ready():
 	#_process_chunk_loading()
 
 func _process(_delta):
+	#pass
 	self.clear()
+	#pass
 	#_process_chunk_loading()
 
 ##func _process_chunk_loading(energyArray):
