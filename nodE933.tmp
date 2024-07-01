@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://jkb77dan0nob"]
+[gd_scene load_steps=13 format=3 uid="uid://jkb77dan0nob"]
 
 [ext_resource type="MeshLibrary" uid="uid://bpex1086vgwgh" path="res://Assets/Models/meshLibrary.tres" id="3_brk37"]
 [ext_resource type="Script" path="res://GridMap.gd" id="4_kqj64"]
 [ext_resource type="Script" path="res://CharacterBody3D.gd" id="4_t8xac"]
 [ext_resource type="PackedScene" uid="uid://bf87tini5ftqj" path="res://Audio_visualizer.tscn" id="4_x84ke"]
-[ext_resource type="Script" path="res://Camera3D.gd" id="5_tuwps"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cjok1"]
 
@@ -12,10 +11,9 @@
 sky_material = SubResource("ProceduralSkyMaterial_cjok1")
 
 [sub_resource type="Environment" id="Environment_u5cr6"]
-background_mode = 1
+background_mode = 2
 sky = SubResource("Sky_e83ev")
 sky_custom_fov = 1.0
-ambient_light_color = Color(0.0177325, 0.0177323, 0.0177324, 1)
 volumetric_fog_temporal_reprojection_enabled = false
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vvdyn"]
@@ -50,7 +48,6 @@ physics_material = SubResource("PhysicsMaterial_i0sab")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.369847, 0)
-visible = false
 script = ExtResource("4_t8xac")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
@@ -67,7 +64,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4609, 1.93086)
 transform = Transform3D(1, 0, 0, 0, 0.965021, 0.262172, 0, -0.262172, 0.965021, 0, 0, 0)
 
 [node name="AudioVisualizer" parent="." instance=ExtResource("4_x84ke")]
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68657, 0)
-script = ExtResource("5_tuwps")

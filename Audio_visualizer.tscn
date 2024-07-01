@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Audio_visualizer.gd" id="1_1haya"]
 [ext_resource type="Texture2D" uid="uid://b1ode7jvq7gt6" path="res://blackCircle.png" id="2_74xyl"]
-[ext_resource type="AudioStream" uid="uid://b4mrfttph14y5" path="res://38002__erh__cello-b1-124-seq.wav" id="2_rbsj2"]
+[ext_resource type="AudioStream" uid="uid://cu6wm4jdes8oa" path="res://battleThemeA.mp3" id="2_ru0ej"]
 
 [node name="AudioVisualizer" type="Control"]
 layout_mode = 3
@@ -18,8 +18,8 @@ grow_vertical = 2
 script = ExtResource("1_1haya")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_rbsj2")
-volume_db = -1.28
+stream = ExtResource("2_ru0ej")
+volume_db = 0.949
 autoplay = true
 bus = &"Music"
 
