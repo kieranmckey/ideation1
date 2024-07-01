@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://jkb77dan0nob"]
+[gd_scene load_steps=13 format=3 uid="uid://jkb77dan0nob"]
 
 [ext_resource type="Script" path="res://node_3d.gd" id="1_ouhp2"]
+[ext_resource type="MeshLibrary" uid="uid://d1402vdduo3l6" path="res://Assets/Models/meshLibrary2.tres" id="2_vdyh3"]
 [ext_resource type="MeshLibrary" uid="uid://bpex1086vgwgh" path="res://Assets/Models/meshLibrary.tres" id="3_brk37"]
 [ext_resource type="Script" path="res://GridMap.gd" id="4_kqj64"]
 [ext_resource type="PackedScene" uid="uid://bf87tini5ftqj" path="res://Audio_visualizer.tscn" id="4_x84ke"]
@@ -17,6 +18,16 @@ background_mode = 1
 sky = SubResource("Sky_e83ev")
 sky_custom_fov = 1.0
 ambient_light_color = Color(0.0177325, 0.0177323, 0.0177324, 1)
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+glow_intensity = 2.22
+glow_bloom = 0.62
+glow_hdr_threshold = 0.9
+volumetric_fog_albedo = Color(0.162066, 0.162066, 0.162066, 1)
 volumetric_fog_temporal_reprojection_enabled = false
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vvdyn"]
@@ -34,7 +45,7 @@ shadow_enabled = true
 environment = SubResource("Environment_u5cr6")
 
 [node name="GridMap" type="GridMap" parent="." groups=["gridmap"]]
-mesh_library = ExtResource("3_brk37")
+mesh_library = ExtResource("2_vdyh3")
 physics_material = SubResource("PhysicsMaterial_vvdyn")
 script = ExtResource("4_kqj64")
 
@@ -50,19 +61,29 @@ fov = 95.1326
 script = ExtResource("5_tuwps")
 
 [node name="OptionButton" type="OptionButton" parent="."]
-offset_left = 913.0
-offset_top = 17.0
-offset_right = 1090.0
-offset_bottom = 41.0
+offset_left = 927.0
+offset_top = 45.0
+offset_right = 1104.0
+offset_bottom = 69.0
 
 [node name="HSlider" type="HSlider" parent="."]
-offset_left = 482.0
-offset_top = 17.0
-offset_right = 659.0
-offset_bottom = 41.0
+offset_left = 496.0
+offset_top = 45.0
+offset_right = 673.0
+offset_bottom = 69.0
 max_value = 1.0
 step = 0.001
 value = 0.5
 script = ExtResource("6_g7rht")
 
+[node name="Button" type="Button" parent="."]
+process_mode = 3
+offset_left = 229.0
+offset_top = 52.0
+offset_right = 245.0
+offset_bottom = 68.0
+toggle_mode = true
+
 [connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="Button" to="." method="_on_button_toggled"]

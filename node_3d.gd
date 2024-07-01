@@ -20,3 +20,13 @@ func _on_option_button_item_selected(index):
 	music_player.stream = AudioStreamOggVorbis.load_from_file("res://" + audio_file + ".ogg")
 	music_player.play()
 
+func _on_button_pressed():
+	pass
+	#get_tree().paused = true
+
+
+func _on_button_toggled(toggled_on):
+	if toggled_on:
+		get_tree().paused = true
+	else:
+		get_tree().paused = false
