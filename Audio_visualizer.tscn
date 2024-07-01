@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bf87tini5ftqj"]
 
 [ext_resource type="Script" path="res://Audio_visualizer.gd" id="1_1haya"]
-[ext_resource type="AudioStream" uid="uid://cnlq8chfjvwj6" path="res://battle.ogg" id="2_0d4bf"]
-[ext_resource type="Texture2D" uid="uid://cn7dfn7v78sx6" path="res://blackCircle.png" id="2_74xyl"]
+[ext_resource type="AudioStream" uid="uid://dpvoff6hgg3bn" path="res://battle.ogg" id="2_0d4bf"]
+[ext_resource type="Texture2D" uid="uid://djpgsae8uxv88" path="res://blackCircle.png" id="2_74xyl"]
 
 [node name="AudioVisualizer" type="Control"]
 layout_mode = 3
