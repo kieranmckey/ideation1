@@ -16,7 +16,6 @@ func _add_items():
 func _on_option_button_item_selected(index):
 	var currently_selected = index
 	var audio_file = drop_down_menu.get_item_text(index)
-	
 	music_player.stream = AudioStreamOggVorbis.load_from_file("res://" + audio_file + ".ogg")
 	music_player.play()
 
