@@ -21,7 +21,6 @@ func _on_option_button_item_selected(index):
 
 func _on_button_pressed():
 	pass
-	#get_tree().paused = true
 
 
 func _on_button_toggled(toggled_on):
